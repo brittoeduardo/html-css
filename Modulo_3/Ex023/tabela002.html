@@ -24,6 +24,15 @@
         td.num{
             text-align: right;
         }
+        tbody > tr:nth-child(2n){ /* Isso faz o efeito zebrado no lugar do 2n pode deixar odd(impar) even(par) ou criar uma sequencia propria como 5n-1 por exemplo*/
+            background-color: lightgray;
+        }
+        caption{
+            font-size: 1.5em;
+            font-weight: bold;
+            padding: 10px;
+            background-color: rgba(19, 212, 226, 0.322);
+        }
     </style>
 </head>
 <body>
@@ -31,18 +40,23 @@
     <!--
         ANATOMIA PARA TABELAS GRANDES
         TABLE
+            CAPTION (titulo da tabela)
             THEAD
                 TR,TD,TH 
             TBODY
                 TR,TD,TH 
             TFOOT
                 TR,TD,TH
+        *TR é a linha
+        *TH é o titulo que vai na linha (caso tenha, ex Estado e População como titulo de coluna e o Total da população no final da tabela)
+        *TD são os dados
     -->
     <table>
+        <caption>População das Unidades Federativas</caption>
         <thead>
             <tr>
-                <th>Estado</th>
-                <th>População</th>
+                <th scope="col">Estado</th>
+                <th scope="col" style="width: 50px;">População</th>
             </tr>
         </thead>
         <tbody>
@@ -61,7 +75,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <th>Total de Habitantes</th>
+                <th scope="row">Total de Habitantes</th>
                 <td class="num"><strong>87.352.783</strong></td>
             </tr>
         </tfoot>
