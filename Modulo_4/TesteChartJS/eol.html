@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EOL</title>
+</head>
+
+<body>
+    <div style="width: 600px; height: 400px;">
+    <!-- Start Canvas -> desenhar elementos gráficos usando JS-->
+    <canvas class="line-chart"></canvas>
+
+    <!-- Include Chart JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+    <script>
+        var ctx = document.getElementsByClassName("line-chart")
+
+        // Type, data e options
+        var chartGraph = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ["BA","CE","MA","PB","PE","PI","RN","RS","SC"],
+                datasets: [
+                    {
+                        label: "Potência (MW)",
+                        data: [6990,2578,426,672,1028,3428,6855,1836,251],
+                        borderWidth: 6,
+                        borderColor: 'rgba(77,166,253,0.85)',
+                        backgroundColor: 'transparent',
+                    },
+                ]
+            },
+            options:{
+                title:{
+                    display: true,
+                    fontSize: 20,
+                    text: "Potência Instalada em Operação"
+                },
+            }
+        });
+    </script>
+    </div>
+    <div style="width: 600px; height: 400px;">
+        <!-- Start Canvas -> desenhar elementos gráficos usando JS-->
+        <canvas class="bar-chart"></canvas>
+    
+        <!-- Include Chart JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    
+        <script>
+            var ctx = document.getElementsByClassName("bar-chart")
+    
+            // Type, data e options
+            var chartGraph = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ["BA","CE","MA","PB","PE","PI","RN","RS","SC"],
+                    datasets: [
+                        {
+                            label: "Quantidade de Usinas",
+                            data: [261,100,16,31,40,105,226,81,18],
+                            borderWidth: 6,
+                            borderColor: 'transparent',
+                            backgroundColor: 'rgba(77,166,253,0.85)',
+                        },
+                    ]
+                },
+                options:{
+                    title:{
+                        display: true,
+                        fontSize: 20,
+                        text: "Quantidade de Usinas em Operação"
+                    },
+                }
+            });
+        </script>
+        </div>
+</body>
+
+</html>
