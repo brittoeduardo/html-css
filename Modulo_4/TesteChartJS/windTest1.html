@@ -3,8 +3,8 @@
 	<title>Terrain Sample with Glacier 3D</title>
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
-	<script src="https://cdn.jsdelivr.net/gh/jscastro76/threebox@v.2.2.1/dist/threebox.min.js" type="text/javascript"></script>
-	<link href="https://cdn.jsdelivr.net/gh/jscastro76/threebox@v.2.1.1/dist/threebox.css" rel="stylesheet" />
+	<script src="../dist/threebox.js" type="text/javascript"></script>
+	<link href="../dist/threebox.css" rel="stylesheet" />
 	<script src="config.js"></script>
 	<style>
 		body {
@@ -71,7 +71,7 @@
 		let date = new Date();
 		let mapConfig = {
 			PAR: {
-				origin: [-40.89640, -9.52629, 665], center: [-40.890795, -9.521056], zoom: 15.95, pitch: 70, bearing: 0, scale: 0.004, rotation: { x: 90, y: 177, z: 0 }, timezone: 'America/Sao_Paulo', obj: 'https://brittoeduardo.github.io/html-css/Modulo_4/TesteChartJS/windmill_a.gltf',
+				origin: [-40.89640, -9.52629, 665], center: [-40.890795, -9.521056], zoom: 17.5, pitch: 70, bearing: 0, scale: 0.004, rotation: { x: 90, y: 177, z: 0 }, timezone: 'America/Sao_Paulo', obj: './models/windmill_a/windmill_a.gltf',
 			},
 			names: {
 				customLayer: "custom-layer",
@@ -104,7 +104,8 @@
 			pitch: point.pitch,
 			bearing: point.bearing,
 			container: 'map',
-			antialias: true, hash: true
+			antialias: true, 
+			hash: true,
 		});
         
 		map.addControl(new mapboxgl.NavigationControl());
@@ -114,7 +115,7 @@
 			map.getCanvas().getContext('webgl'),
 			{
 				realSunlight: true,
-                //defaultLights: true,
+                defaultLights: true,
 				sky: true,
 				terrain: true,
 				enableSelectingObjects: true, 
@@ -178,7 +179,7 @@
 						model.addTooltip("PR1-01", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 
@@ -196,7 +197,7 @@
 						model.addTooltip("PR1-02", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 
@@ -214,7 +215,7 @@
 						model.addTooltip("PR1-03", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 					let options4 = {
@@ -231,7 +232,7 @@
 						model.addTooltip("PR1-04", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 					let options5 = {
@@ -248,7 +249,7 @@
 						model.addTooltip("PR1-05", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 					let options6 = {
@@ -265,7 +266,7 @@
 						model.addTooltip("PR1-06", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 					let options7 = {
@@ -282,7 +283,7 @@
 						model.addTooltip("PR1-07", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 					let options8 = {
@@ -299,7 +300,7 @@
 						model.addTooltip("PR1-08", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 					let options9 = {
@@ -316,7 +317,7 @@
 						model.addTooltip("PR1-09", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 					let options10 = {
@@ -333,7 +334,7 @@
 						model.addTooltip("PR1-10", true);
 						//model.color = 0xffffff;
 						//model.selected = true;
-						model.playDefault({ animation: 0, duration: 300000 });
+						model.playDefault({ animation: 0, duration: 3000000 });
 						tb.add(model);
 					})
 
