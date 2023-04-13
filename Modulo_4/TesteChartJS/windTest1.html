@@ -1,6 +1,6 @@
 <!doctype html>
 <head>
-	<title>Terrain Sample with Glacier 3D</title>
+	<title>Mapa ABEEOLICA</title>
 	<link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet">
 	<script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
 	<script src="threebox.js" type="text/javascript"></script>
@@ -13,8 +13,11 @@
 		}
 
 		html, body, #map {
-			height: 100%;
+			height: 340px;
+			width: 1040px;
+			margin: 0 auto 0 auto;
 		}
+
 		#time {
 			position: absolute;
 			left: 0;
@@ -32,14 +35,14 @@
 			position: absolute;
 			left: 0px;
 			right: 0px;
-			bottom: 40px;
+			bottom: 10px;
 			margin-left: auto;
 			margin-right: auto;
-			max-width: 30%;
+			max-width: 15%;
 			padding: 5px 10px;
-			font-size: 18px;
-			line-height: 18px;
-			border-radius: 3px;
+			font-size: 15px;
+			line-height: 15px;
+			border-radius: 10px;
 			text-align: center;
 			z-index: 1;
 		}
@@ -48,7 +51,7 @@
 <body>
 	<div id='map' class='map'>
 	<div id="hour" class="mapboxgl-map"></div>
-	<input id='time' type='range' min="0" max="86400" />
+	<!--<input id='time' type='range' min="0" max="86400" />-->
 
 	<script type="module">
 
@@ -71,7 +74,7 @@
 		let date = new Date();
 		let mapConfig = {
 			PAR: {
-				origin: [-40.89640, -9.52629, 665], center: [-40.890795, -9.521056], zoom: 17.5, pitch: 70, bearing: 0, scale: 0.004, rotation: { x: 90, y: 177, z: 0 }, timezone: 'America/Sao_Paulo', obj: 'https://brittoeduardo.github.io/html-css/Modulo_4/TesteChartJS/windmill_a.gltf',
+				origin: [-40.89640, -9.52629, 665], center: [-40.890795, -9.521056], zoom: 16.27, pitch: 70, bearing: 0, scale: 0.004, rotation: { x: 90, y: 177, z: 0 }, timezone: 'America/Sao_Paulo', obj: './models/windmill_a/windmill_a.gltf',
 			},
 			names: {
 				customLayer: "custom-layer",
@@ -98,7 +101,7 @@
 
 		let point = mapConfig.PAR;
 		var map = new mapboxgl.Map({
-			style: 'mapbox://styles/mapbox/satellite-streets-v9', //'mapbox://styles/mapbox/outdoors-v11', //'mapbox://styles/mapbox/dark-v10',//'mapbox://styles/mapbox/light-v10',//'mapbox://styles/mapbox/satellite-streets-v9',
+			style: 'mapbox://styles/mapbox/satellite-streets-v9', //'mapbox://styles/mapbox/outdoors-v11', //'mapbox://styles/mapbox/dark-v10',//'mapbox://styles/mapbox/light-v10',
 			center: point.center,
 			zoom: point.zoom,
 			pitch: point.pitch,
@@ -123,31 +126,31 @@
 			}
 		);
 
-		var time = date.getHours() * 60 * 60 + date.getMinutes() * 60 + date.getSeconds();
-		var timeInput = document.getElementById('time');
-		timeInput.value = time;
-		timeInput.oninput = () => {
-			time = +timeInput.value;
-			date.setHours(Math.floor(time / 60 / 60));
-			date.setMinutes(Math.floor(time / 60) % 60);
-			date.setSeconds(time % 60);
-			console.log(date);
-			map.triggerRepaint();
-		};
+		// var time = date.getHours() * 60 * 60 + date.getMinutes() * 60 + date.getSeconds();
+		// var timeInput = document.getElementById('time');
+		// timeInput.value = time;
+		// timeInput.oninput = () => {
+		// 	time = +timeInput.value;
+		// 	date.setHours(Math.floor(time / 60 / 60));
+		// 	date.setMinutes(Math.floor(time / 60) % 60);
+		// 	date.setSeconds(time % 60);
+		// 	console.log(date);
+		// 	map.triggerRepaint();
+		// };
 
-		let stats;
-		import Stats from 'https://threejs.org/examples/jsm/libs/stats.module.js';
-		function animate() {
-			requestAnimationFrame(animate);
-			stats.update();
-		}
+		// let stats;
+		// import Stats from 'https://threejs.org/examples/jsm/libs/stats.module.js';
+		// function animate() {
+		// 	requestAnimationFrame(animate);
+		// 	stats.update();
+		// }
 
 		map.on('style.load', function () {
 
 			// stats
-			stats = new Stats();
-			map.getContainer().appendChild(stats.dom);
-			animate();
+			// stats = new Stats();
+			// map.getContainer().appendChild(stats.dom);
+			// animate();
 
 			// add the DEM source as a terrain layer with exaggerated height
 			//map.addSource('mapbox-dem', {
@@ -342,7 +345,7 @@
 
 				render: function (gl, matrix) {
 					tb.setSunlight(date, point.center);
-					hour.innerHTML = "Local date/time: " + dateToTimezone(date, point.timezone).toLocaleString();
+					hour.innerHTML = "Local date/time: " + dateToTimezone(date, point.timezone).toLocaleString().replace(","," ");
 					tb.update();
 				}
 			});
