@@ -7,7 +7,7 @@
 	<link href="threebox.css" rel="stylesheet" />
 	<script src="config.js"></script>
 	<style>
-		body {
+		*{
 			margin: 0;
 			padding: 0;
 		}
@@ -16,19 +16,24 @@
 			height: 340px;
 			width: 1040px;
 			margin: 0 auto 0 auto;
+			display: flex;
+			align-items: flex-start;
+			justify-content: center;
 		}
 
 		#time {
 			position: absolute;
 			left: 0;
 			right: 0;
-			bottom: 80px;
+			bottom: 45px;
 			margin-left: auto;
 			margin-right: auto;
-			min-width: 90%;
+			min-width: 10%;
+			max-width: 15%;
 			z-index: 1;
 		}
 
+		
 		#hour {
 			background: rgba(0, 0, 0, 0.5);
 			color: #fff;
@@ -72,9 +77,14 @@
 		let minZoom = 12;
 		let seconds = 0;
 		let date = new Date();
+		console.log(date)
+		let timezoneAU = 'Australia/Sydney';
+		let date2 = dateToTimezone(date,timezoneAU)
+		console.log(date2);
+		let originAU = [120.21584 , -20.151715];
 		let mapConfig = {
 			PAR: {
-				origin: [-40.89640, -9.52629, 665], center: [-40.890795, -9.521056], zoom: 16.27, pitch: 70, bearing: 0, scale: 0.004, rotation: { x: 90, y: 177, z: 0 }, timezone: 'America/Sao_Paulo', obj: 'windmill_a.gltf',
+				origin: [-40.89640, -9.52629, 665], center: [-40.890795, -9.521056], zoom: 16.27, pitch: 70, bearing: 0, scale: 5, rotation: { x: 90, y: 177, z: 0 }, timezone: 'America/Sao_Paulo', obj: './models/windmill_a/model2.gltf',
 			},
 			names: {
 				customLayer: "custom-layer",
@@ -145,7 +155,7 @@
 		// 	stats.update();
 		// }
 
-		map.on('style.load', function () {
+		map.on('load', function () {
 
 			// stats
 			// stats = new Stats();
@@ -345,7 +355,9 @@
 
 				render: function (gl, matrix) {
 					tb.setSunlight(date, point.center);
+					//tb.setSunlight(date2, originAU);
 					hour.innerHTML = "Local date/time: " + dateToTimezone(date, point.timezone).toLocaleString().replace(","," ");
+					//hour.innerHTML = "Local date/time: " + date2.toLocaleString().replace(","," ");
 					tb.update();
 				}
 			});
